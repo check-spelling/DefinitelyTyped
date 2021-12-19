@@ -1,0 +1,63 @@
+# See https://github.com/checxxxxxxxxxk-spelling/check-spelling/wiki/Configuration-Examples:-patterns
+
+# data urls
+(['"])data:.*?\g{-1}
+data:[-a-zA-Z=;:/0-9+]*,\S*
+
+# GitHub contributor
+^//\s*(?:Definitions by:|)\s*(?:[-A-Za-z.]+ )+<https://github.com/[^/]+/>$
+
+# GitHub SHAs
+\bapi.github\.com/repos/[^/]+/[^/]+/[^/]+/[0-9a-f]+\b
+(?:\[[0-9a-f]+\]\(https:/|)/(?:www\.|)github\.com/[^/]+/[^/]+(?:/[^/]+/[0-9a-f]+(?:[-0-9a-zA-Z/#.]*|)\b|)
+\bgithub\.com/[^/]+/[^/]+[@#][0-9a-f]+\b
+# githubusercontent
+/[-a-z0-9]+\.githubusercontent\.com/[-a-zA-Z0-9?&=_\/.]*
+# gist github
+/gist\.github\.com/[^/]+/[0-9a-f]+
+# git.io
+\bgit\.io/[0-9a-zA-Z]+
+# GitHub JSON
+"node_id": "[-a-zA-Z=;:/0-9+]*"
+# Contributor
+\[[^\]]+]\(https://github\.com/[^/]+\)
+# GHSA
+GHSA(?:-[0-9a-z]{4}){3}
+
+# AWS
+\b\w*\.s3\.amazonaws\.com/[-\w/&#%_?:=]*
+\b[0-9a-z]{10}\.execute-api\.[-0-9a-z]+\.amazonaws\.com\b
+\b\w+\.[-0-9a-z]+\.elb\.amazonaws\.com\b
+\bsns\.[-0-9a-z]+.amazonaws\.com/[-\w/&#%_?:=]*
+
+# topic:
+topic:[0-9a-f]{32}\b
+
+# enc:
+enc:[-a-zA-Z=;:/0-9+@{}]*(~[-a-zA-Z=;:/0-9+@{}]*|):
+
+# uuid:
+\b[0-9a-fA-F]{8}-(?:[0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}\b
+
+# sha
+(['"])[0-9a-f]{224}\g{-1}
+(['"])[0-9a-f]{144}\g{-1}
+(['"])[0-9a-f]{128}\g{-1}
+(['"])[0-9a-f]{96}\g{-1}
+(['"])[0-9a-f]{64}\g{-1}
+(['"])[0-9a-f]{40}\g{-1}
+(['"])[0-9a-f]{32}\g{-1}
+
+# URL escaped characters
+\%[0-9A-F]{2}
+
+# hex digits including css/html color classes:
+(?:[\\0][xX]|\\u|[uU]\+|#x?|\%23)[0-9a-fA-FgGrR_]{2,}(?:[uU]?[lL]{0,2}|u\d+)\b
+
+# Lorem
+([`'"])[^'"]*\b(?i:lorem|ipsum|consectetur|adipiscing|commodo)\b[^'"]*\g{-1}
+^\s*[^'"]*\b(?i:lorem|ipsum|consectetur|adipiscing|commodo)\b[^'"]*$
+
+#
+# ignore long runs of a single character:
+\b([A-Za-z])\g{-1}{3,}\b
